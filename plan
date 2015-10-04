@@ -1,1 +1,4 @@
-crossover dummy
+merge dict and list based dna classes
+	push common to base class
+
+population step
