@@ -1,10 +1,10 @@
 import unittest 
 
 from population import Population
-from dna import Dna, ListDna, crossover, DictDna, different_length_crossover
+from dna import Dna, ListDna, DictDna
 
 from unittest import TestCase
-from pprint import pprint
+
 
 
 class TestPopulation(TestCase):
@@ -23,6 +23,20 @@ class TestPopulation(TestCase):
 		pd = Population(DictDna)
 		if len(pd) != 0:
 			self.assertEqual(type(pd[0]), DictDna)
+
+	def test_population_step(self):
+		p = Population()
+		data_before = p.data[:]
+		size_before = len(p.data)
+		p.step()
+		self.assertEqual(len(p.data), size_before)
+		self.assertNotEqual(p.data, data_before)
+
+	def test_itetate(self):
+		p = Population()
+		p.iterate()
+		
+
 
 
 class TestListDna(TestCase):
@@ -46,19 +60,17 @@ class TestListDna(TestCase):
 		d = ListDna()
 		self.assertEqual(d.fitness_function(), sum(d))
 
-
-class TestCrossover(TestCase):
-	def test_crossover_function_returns_two_dna_objects(self):
+	def test_crossover_returns_two_dna_objects(self):
 		d1 = ListDna()
 		d2 = ListDna()
-		d11, d12 = crossover(d1, d2)
+		d11, d12 = ListDna.crossover(d1, d2)
 		self.assertEqual(type(d11),ListDna)
 		self.assertEqual(type(d12),ListDna)
 
 	def test_crossover_with_one_crossing_point(self):
 		d1 = ListDna([1, 1, 1, 1, 1])
 		d2 = ListDna([0, 0, 0, 0, 0])
-		d11, d12 = crossover(d1, d2, [3])
+		d11, d12 = ListDna.crossover(d1, d2, [3])
 		self.assertEqual(d11.data, [1, 1, 1, 0, 0])
 		self.assertEqual(d12.data, [0, 0, 0, 1, 1])
 
@@ -79,26 +91,24 @@ class TestDictDna(TestCase):
 	def test_initial_size_is_random(self):
 		pass
 
+	def test_crossover(self):
+		d1 = DictDna({0.0 : 1 ,0.1 : 1 ,0.2 : 1 ,0.3 : 1 ,0.4 : 1 ,
+			          0.5 : 1 ,0.6 : 1 ,0.7 : 1 ,0.8 : 1 ,0.9 : 1 })
+		d2 = DictDna({0.0 : 0 ,0.2 : 0 ,0.4 : 0 ,0.6 : 0 ,0.8 : 0})
+		start = 0.3
+		end  = 0.7
+		d11, d12 = DictDna.crossover(d1, d2, start, end)
+		self.assertEqual(d11, {0.0 : 1 ,0.1 : 1 ,0.2 : 1 ,0.3 : 1 ,0.4 : 0,
+							   0.6 : 0 ,0.7 : 1 ,0.8 : 1 ,0.9 : 1})
+		self.assertEqual(d12, {0.0 : 0 ,0.2 : 0 ,0.4 : 1 ,0.5 : 1 ,0.6 : 1 ,0.8 : 0})
+		self.assertEqual(len(d1) + len(d2), len(d11) + len(d12))
+
 # def print_dict(d):
 # 	print('{', end="")
 # 	for k, v in sorted(d.items()):
 
 # 		print ( k, ':', v, ',', end="")
 # 	print('}')
-
-class TestLengthCrossover(TestCase):
-	def test_different_length_crossover(self):
-		d1 = DictDna({0.0 : 1 ,0.1 : 1 ,0.2 : 1 ,0.3 : 1 ,0.4 : 1 ,
-			          0.5 : 1 ,0.6 : 1 ,0.7 : 1 ,0.8 : 1 ,0.9 : 1 })
-		d2 = DictDna({0.0 : 0 ,0.2 : 0 ,0.4 : 0 ,0.6 : 0 ,0.8 : 0})
-		start = 0.3
-		end  = 0.7
-		d11, d12 = different_length_crossover(d1, d2, start, end)
-		self.assertEqual(d11, {0.0 : 1 ,0.1 : 1 ,0.2 : 1 ,0.3 : 1 ,0.4 : 0,
-							   0.6 : 0 ,0.7 : 1 ,0.8 : 1 ,0.9 : 1})
-		self.assertEqual(d12, {0.0 : 0 ,0.2 : 0 ,0.4 : 1 ,0.5 : 1 ,0.6 : 1 ,0.8 : 0})
-		self.assertEqual(len(d1) + len(d2), len(d11) + len(d12))
-
 	
 if __name__ == '__main__':
 	unittest.main()		
