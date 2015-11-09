@@ -1,4 +1,59 @@
 make algorithm progress
-	- sort half out and duplicate
+	- test iterate
+		- find cases when algorithm converges reliably
+		- find space of parameters that lead to reliable convergence
+		- ask hulayeva
+	- make operator dna as dict dna with operator genes
+	- make nk-network as dict dna with boolean functions and links as genes
 
-T
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+add functions as genes
+
+- do i need to generate new sequences?
+- is a data an initial state?
+
+fitness function
+ 
+ e.g.
+ 	add(x).add(x).front() is a sequence of events for circular queue
+ 		it generates 2 different states: (len=1; rear=0; front=0) and (len=2; rear=1; front=0). 
+
+ The events that modify the data states, called sensitive: add(x)
+ the events that do not modify the states, called insensitive: front()
+
+
+The fitness function has to:
+ feature minimizing the number of sequences in the population
+ save sequences with unique states
+
+- does fitness function have to be constant?
+ 
+2 types of redundancies: 
+	redundant sequence (i.e. duplicate sequences or sequence is subset from another)
+	redundant states in the sequence (i.e. such as adding to full queue or removing from empty queue). 
+
+type she fitness function has to be applicable for all case studies. 

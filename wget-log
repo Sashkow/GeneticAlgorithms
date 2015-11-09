@@ -1,0 +1,23 @@
+--2015-11-01 21:09:28--  http://www.ex.ua/filelist/17107355.urls
+Resolving www.ex.ua (www.ex.ua)... 77.120.115.184
+Connecting to www.ex.ua (www.ex.ua)|77.120.115.184|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1140 (1.1K) [application/x-url-list]
+Saving to: ‘17107355.urls’
+
+
+
+2015-11-01 21:09:28 (107 MB/s) - ‘17107355.urls’ saved [1140/1140]
+
+--2015-11-01 21:09:28--  http://www.ex.ua/get/34248530
+Reusing existing connection to www.ex.ua:80.
+HTTP request sent, awaiting response... 302 Moved
+Location: http://fs172.www.ex.ua/get/257b031ade1fed6af8abca70eedde876/34248530/10_01.mp3 [following]
+--2015-11-01 21:09:28--  http://fs172.www.ex.ua/get/257b031ade1fed6af8abca70eedde876/34248530/10_01.mp3
+Resolving fs172.www.ex.ua (fs172.www.ex.ua)... 213.133.190.172
+Connecting to fs172.www.ex.ua (fs172.www.ex.ua)|213.133.190.172|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 4909975 (4.7M) [audio/mpeg]
+Saving to: ‘10_01.mp3’
+
+ 1% [                                            ] 64,222      0.40B/s  eta 141d     1% [                                            ] 72,414      0.45B/s  eta 125d     5% [=>                                          ] 275,110     1.70B/s  eta 125d     5% [=>                                          ] 275,110     1.70B/s  eta 31d 14h  5% [=>                                          ] 275,110     1.70B/s  eta 31d 14h  5% [=>                                          ] 275,110     1.70B/s  eta 31d 14h  5% [=>                                          ] 275,110     1.70B/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h  5% [=>                                          ] 275,110     --.-K/s  eta 31d 14h 
