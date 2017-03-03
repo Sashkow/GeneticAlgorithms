@@ -1,1 +1,2 @@
+biopython==1.68
 wheel==0.24.0
