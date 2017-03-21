@@ -71,30 +71,32 @@ class Population(UserList):
 
         this method conserves population size
         """
-        amt_selected = \
-          int(self.population_size * self.part_selected) 
+        # amt_selected = \
+        #   int(self.population_size * self.part_selected) 
 
-        spawning_pool = []      # list of dna selected for reproduction
+        # spawning_pool = []      # list of dna selected for reproduction
         new_data =[]
         
         sorted_dna = sorted(self.data, 
                            key=lambda dna: dna.fitness_function(dna),
                            reverse=True)
-        spawning_pool = sorted_dna[:amt_selected]
+        
         
         
 
-        # # mutation
-        # for dna in spawning_pool:
-        #     dna.mute(self.mutation_probability)
+        # mutation
+        for dna in sorted_dna:
+            dna.mute(self.mutation_probability)
 
         # crossover
         while len(new_data) < \
                 self.population_size - (self.population_size % 2):
 
-            d1 = copy.deepcopy(self.pick())
-            d2 = copy.deepcopy(self.pick())
-            d1.crossover(d2)
+            d1 = copy.copy(self.pick())
+            d2 = copy.copy(self.pick())
+            times = 2
+            for i in range(times):
+                d1.crossover(d2)
 
             new_data += [d1, d2]
 
@@ -119,7 +121,7 @@ class Population(UserList):
             sorted_polulation = sorted(self.data, key=lambda item: - item.fitness_function(item))
             print(
                     [item.to_string() for item in sorted_polulation[:8]],
-                    [round(item.fitness_function(item),2) for item in sorted_polulation[:8]]
+                    [round(item.fitness_function(item),2) for item in sorted_polulation]
             )
 
             # print([item.to_string() for item in self.data])
@@ -128,6 +130,5 @@ class Population(UserList):
         print("result")
         sorted_polulation = sorted(self.data, key=lambda item: - item.fitness_function(item))
         print([str(item) for item in sorted_polulation])
-
 
 

@@ -10,6 +10,8 @@ import copy
 
 import random
 
+import matplotlib.pyplot as plt
+
 class Dna(object):
     """
     must have:
@@ -43,7 +45,7 @@ def dummy_fitness_function_for_nk_dna(nk_dna):
 
 
 def letter_dna_fitness_function(letter_dna):
-    return 200 - mt.Tm_NN(Seq(letter_dna.to_string()))
+    return (100 - mt.Tm_NN(Seq(letter_dna.to_string())))
 
 
 
@@ -349,3 +351,46 @@ class NK_Dna(DictDna):
         self.automata = automata
 
         self.fitness_function = dummy_fitness_function_for_nk_dna
+
+
+def all_seqs(length):
+    if length == 0:
+        return []
+    if length == 1:
+        return ['A','T','G','C']
+    else:
+        re = []
+        for b in all_seqs(length-1):
+            re = re + [''.join([a,b]) for a in all_seqs(1)]
+        return re
+
+
+
+def hist_mt(seqs):
+    min_seqs =[]
+    max_seqs =[]
+    mts = []
+    # for seq in seqs:
+    #     checked = mt._check(seq, 'Tm_NN')
+    #     mts.append(mt.Tm_NN(Seq(checked)))
+
+    # plt.hist(mts)
+    # plt.show()
+
+    for seq in seqs:
+        # print(seq,mt.Tm_NN(Seq(seq)))
+        
+        if mt.Tm_NN(Seq(seq))< -20:
+            # print("min",seq)
+            min_seqs.append(seq)
+        if mt.Tm_NN(Seq(seq))> 30:
+            # print("max",seq)
+            max_seqs.append(seq)
+    with open('output.txt', 'w') as f:
+        print("min", file=f)
+        for seq in min_seqs:
+            print(seq,mt.Tm_NN(Seq(seq)), file=f)
+        print("max", file=f)
+        for seq in max_seqs:
+            print(seq, mt.Tm_NN(Seq(seq)), file=f)
+

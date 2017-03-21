@@ -13,4 +13,4 @@ source env/bin/activate
 
 pip install -r requirements.txt
 
-python3 test.py
+python test.py

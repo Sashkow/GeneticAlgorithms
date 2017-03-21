@@ -20,6 +20,7 @@ from dna import letter_dna_fitness_function
 import copy
 
 
+
 # class TestPopulation(TestCase):
 
 #   def test_population_default_constructor(self):
@@ -277,42 +278,54 @@ import copy
         # self.assertEqual(fitness_function(seqlist_dna))
 
 
-class TestLetterDnaPopulation(TestCase):
+# class TestLetterDnaPopulation(TestCase):
 
-    def test_letter_dna_population(self):
-        p = Population(
-                DnaClass=LetterListDna,
-                GeneClass=LetterGene,
-                fitness_function=letter_dna_fitness_function,
-                dna_size=10,
-                population_size=100,
-                generations=100,
-                mutation_probability=.001)
+#     def test_letter_dna_population(self):
+#         p = Population(
+#                 DnaClass=LetterListDna,
+#                 GeneClass=LetterGene,
+#                 fitness_function=letter_dna_fitness_function,
+#                 dna_size=10,
+#                 population_size=50,
+#                 generations=1000,
+#                 mutation_probability=.02)
 
-        p.iterate()
+#         p.iterate()
 
-    def test_population_pick(self):
-        """
-        test population members are selected proportionately to their
-        fitness
-        """
-        p = Population(
-                DnaClass=LetterListDna,
-                GeneClass=LetterGene,
-                fitness_function=letter_dna_fitness_function,
-                dna_size=50)
+    # def test_population_pick(self):
+    #     """
+    #     test population members are selected proportionately to their
+    #     fitness
+    #     """
+    #     p = Population(
+    #             DnaClass=LetterListDna,
+    #             GeneClass=LetterGene,
+    #             fitness_function=letter_dna_fitness_function,
+    #             dna_size=50)
         
-        fitness_dict = {str(item):item.fitness_function(item) for item in p.data}
+    #     fitness_dict = {str(item):item.fitness_function(item) for item in p.data}
 
-        frequency_dict = {str(item):0 for item in p.data}
+    #     frequency_dict = {str(item):0 for item in p.data}
 
-        for i in range(10):
-            frequency_dict[str(p.pick())] += 1
+    #     for i in range(10):
+    #         frequency_dict[str(p.pick())] += 1
 
         # for item in frequency_dict:
         #   print(item, fitness_dict[item], frequency_dict[item])
 
+class TestAllSeqs(TestCase):
 
+    def test_all_seqs_returns_right_amnt(self):
+        length = 1
+        self.assertEqual(len(all_seqs(length)),4**length)
+        length = 2
+        self.assertEqual(len(all_seqs(length)),4**length)
+        length = 3
+        self.assertEqual(len(all_seqs(length)),4**length)
+        length = 8
+        self.assertEqual(len(all_seqs(length)),4**length)
+
+        hist_mt(all_seqs(length))
 
 
 
